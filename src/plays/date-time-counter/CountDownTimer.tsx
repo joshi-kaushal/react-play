@@ -11,7 +11,17 @@ const ExpiredNotice = () => {
   );
 };
 
-const ShowCounter = ({ days, hours, minutes, seconds }) => {
+const ShowCounter = ({
+  days,
+  hours,
+  minutes,
+  seconds,
+}: {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}) => {
   return (
     <div className="show-counter">
       <a
@@ -32,7 +42,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
   );
 };
 
-const CountDownTimer = ({ targetDate }) => {
+const CountDownTimer = ({ targetDate }: { targetDate: Date }) => {
   const [days, hours, minutes, seconds] = useCountDown(targetDate);
 
   if (days + hours + minutes + seconds <= 0) {

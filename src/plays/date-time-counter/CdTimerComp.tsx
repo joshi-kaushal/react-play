@@ -2,17 +2,19 @@ import PlayHeader from "common/playlists/PlayHeader";
 import { useState } from "react";
 import CountDownTimer from "./CountDownTimer";
 
-const CdTimerComp = (props) => {
-  const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
-  const NOW_IN_MS = new Date().getTime();
+const CdTimerComp = (props: any) => {
+  const THREE_DAYS_IN_MS: number = 3 * 24 * 60 * 60 * 1000;
+  const NOW_IN_MS: number = new Date().getTime();
 
-  const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
+  const dateTimeAfterThreeDays: number = NOW_IN_MS + THREE_DAYS_IN_MS;
+
   const [targetDate, setTargetDate] = useState(
     new Date(dateTimeAfterThreeDays)
   );
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
+
     if (event.target.value) {
       setTargetDate(new Date(event.target.value));
     } else {
@@ -37,8 +39,10 @@ const CdTimerComp = (props) => {
                 onChange={handleChange}
               />
             </form>
-            <p>Select a date and time in the past, present, and future
-                to see how the countdown timer will display.</p>
+            <p>
+              Select a date and time in the past, present, and future to see how
+              the countdown timer will display.
+            </p>
             <CountDownTimer targetDate={targetDate} />
           </div>
         </div>
