@@ -1,18 +1,17 @@
 import PlayHeader from "common/playlists/PlayHeader";
-import { useState } from 'react';
+import React, { useState } from "react";
 import Counter from "./Counter";
 import "./counter.css";
 
-function CounterApp(props) {
-  
-  const [input, setInput] = useState("");
+function CounterApp(props: any) {
+  const [input, setInput] = useState<number | null>(null);
   const [times, setTimes] = useState(33);
-  function register() {
-    let no_times = Number(input);
-    console.log(no_times);
-    setTimes(no_times);
-    setInput("");
+
+  function register(): void {
+    setTimes(input);
+    setInput(null);
   }
+
   return (
     <>
       <div className="play-details">
@@ -29,9 +28,11 @@ function CounterApp(props) {
             <div className="input_field">
               <input
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                type="number"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setInput(Number(e.target.value))
+                }
                 className="no_of_times"
-                type="text"
               />
               <button onClick={register}>Submit</button>
             </div>
